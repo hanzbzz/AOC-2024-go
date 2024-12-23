@@ -8,3 +8,8 @@ func CountOccurrences[S ~[]E, E comparable](input S) map[E]int {
 	}
 	return result
 }
+
+func RemoveIndex[S any](input []S, index int) []S {
+	// Remove an element from a slice by index.
+	return append(input[:index], input[index+1:]...)
+}
