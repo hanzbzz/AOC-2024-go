@@ -37,3 +37,13 @@ func GenerateCombinations[T any](input []T, length int) [][]T {
 	helper([]T{})
 	return result
 }
+
+func Map[T, V any](ts []T, fn func(T) (V, error)) []V {
+	// applies fn to all elements of ts
+	// works only for fn that returns an error as second element
+	result := make([]V, len(ts))
+	for i, t := range ts {
+		result[i], _ = fn(t)
+	}
+	return result
+}
